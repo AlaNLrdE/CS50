@@ -1,0 +1,15 @@
+sort1 uses: Bubble Sort
+
+How do you know?: because it's the program that takes less time to process a
+sorted list Ω(n)
+
+sort2 uses: Merge sort
+
+How do you know?: because it's the program that sorts a ramdom list faster than
+the other programs O(n log n) and takes almost the same time to process a sorted,
+ reversed or a random list, its Ω and O are the same, n log n.
+
+sort3 uses: Selection sort
+
+How do you know?: because is the program that takes longer to process an already
+sorted list Ω(n^2)
