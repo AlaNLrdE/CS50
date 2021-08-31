@@ -1,6 +1,8 @@
 import numpy as np
 import cv2 as cv
 cap = cv.VideoCapture(0)
+#cap = cv.VideoCapture('pics/woman.mp4')
+
 if not cap.isOpened():
     print("Cannot open camera")
     exit()
@@ -15,9 +17,12 @@ while True:
     formatedFrame = cv.cvtColor(frame, cv.CV_8U)
 
     #Get frame height and width to access pixels
-    height, width, channels = formatedFrame.shape
+    heightOriginal, widthOriginal, channels = formatedFrame.shape
+    originalDim = (widthOriginal,heightOriginal)
+    fourcc = cv.VideoWriter_fourcc('M', 'J', 'P', 'G')
+    out = cv.VideoWriter('outpy.avi',fourcc, 25, originalDim, True)
 
-    scale_percent = 30 # percent of original size
+    scale_percent = 10# percent of original size
     width = int(formatedFrame.shape[1] * scale_percent / 100)
     height = int(formatedFrame.shape[0] * scale_percent / 100)
     dim = (width, height)
@@ -43,19 +48,16 @@ while True:
             pixel = int(pixel * 0x7 / 0xFF)
             pixel = pixel * 0xFF / 0x07
             resized[x,y,2] = pixel
-
-    scale_percent = 200 # percent of original size
-    width = int(resized.shape[1] * scale_percent / 100)
-    height = int(resized.shape[0] * scale_percent / 100)
-    dim = (width, height)
   
     # resize image
-    resized2 = cv.resize(resized, dim, interpolation = cv.INTER_NEAREST)
+    resized2 = cv.resize(resized, originalDim, interpolation = cv.INTER_NEAREST)
 
     # Display the resulting frame
     cv.imshow('frame', resized2)
+    out.write(resized2)
     if cv.waitKey(1) == ord('q'):
         break
 # When everything done, release the capture
+out.release()
 cap.release()
 cv.destroyAllWindows()
