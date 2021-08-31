@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            function listen() {
+                document.getElementById("iron_maiden").addEventListener("click", function() {
+                    document.getElementById("iron_maiden").style.background="green";
+                    document.getElementById("metallica").style.background='#d9edff';
+                    document.getElementById("kiss").style.background='#d9edff';
+                    document.getElementById("correctness").innerHTML = "Correct!";
+                    document.getElementById("correctness").style.visibility="visible";
+                });
+                document.getElementById("metallica").addEventListener("click", function() {
+                    document.getElementById("metallica").style.background='red';
+                    document.getElementById("iron_maiden").style.background='#d9edff';
+                    document.getElementById("kiss").style.background='#d9edff';
+                    document.getElementById("correctness").innerHTML = "Incorrect";
+                    document.getElementById("correctness").style.visibility="visible";
+                });
+                document.getElementById("kiss").addEventListener("click", function() {
+                    document.getElementById("kiss").style.background='red';
+                    document.getElementById("metallica").style.background='#d9edff';
+                    document.getElementById("iron_maiden").style.background='#d9edff';
+                    document.getElementById("correctness").innerHTML = "Incorrect";
+                    document.getElementById("correctness").style.visibility="visible";
+                });
+                document.querySelector('form').onsubmit = function() 
+                {
+                    if (document.querySelector('#city').value != "Mazatlan")
+                    {
+                        document.getElementById("correctness2").innerHTML = "Incorrect";
+                        document.querySelector('#city').style.background = "red";
+                        
+                    }
+                    else
+                    {
+                        document.getElementById("correctness2").innerHTML = "Correct!";
+                        document.querySelector('#city').style.background = "green";
+                    }
+                    document.getElementById("correctness2").style.visibility="visible";
+                    return false;
+                };
+            }
+            document.addEventListener('DOMContentLoaded', listen);
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the most awesome band in the universe?</h3>
+                <p id = "correctness" style="font-size: medium; text-align: left; visibility: hidden;"></p>
+                <button id="iron_maiden">Iron Maiden</button>
+                <button id="metallica">Metallica</button>
+                <button id="kiss">Kiss</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>What is the most beautiful city?</h3>
+                <p id = "correctness2" style="font-size: medium; text-align: left; visibility: hidden;"></p>
+                <form>
+                    <input autocomplete="off" id="city" placeholder="City name..." type="text">
+                    <input type="submit">
+                </form>
+            </div>
+
+        </div>
+    </body>
+</html>
