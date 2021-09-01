@@ -37,8 +37,8 @@ def main():
         for x in range(0, height) :
             for y in range(0, width) :
                 pixel = resized[x,y,0] #B Channel Value
-                pixel = int(pixel * 0x7 / 0xFF)
-                pixel = pixel * 0xFF / 0x07
+                pixel = int(pixel * 0x3 / 0xFF)
+                pixel = pixel * 0xFF / 0x03
                 resized[x,y,0] = pixel
 
                 pixel = resized[x,y,1] #G Channel Value
