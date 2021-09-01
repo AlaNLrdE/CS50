@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 as cv
+
 cap = cv.VideoCapture(0)
 #cap = cv.VideoCapture('pics/woman.mp4')
 
@@ -19,7 +20,7 @@ while True:
     #Get frame height and width to access pixels
     heightOriginal, widthOriginal, channels = formatedFrame.shape
     originalDim = (widthOriginal,heightOriginal)
-    fourcc = cv.VideoWriter_fourcc('M', 'J', 'P', 'G')
+    fourcc = cv.VideoWriter_fourcc('M','J','P','G')
     out = cv.VideoWriter('outpy.avi',fourcc, 25, originalDim, True)
 
     scale_percent = 10# percent of original size
